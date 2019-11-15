@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="se.arbetsformedlingen.aisf.clientlogger.model.ClientLoggerEntity" table="client_logger" schema="public"
+           catalog="aisf">
+        <id name="clientLoggerId">
+            <column name="client_logger_id" sql-type="integer"/>
+        </id>
+        <property name="system">
+            <column name="system" sql-type="varchar(255)"/>
+        </property>
+        <property name="subsystem">
+            <column name="subsystem" sql-type="varchar(255)"/>
+        </property>
+        <property name="clazz">
+            <column name="class" sql-type="varchar(255)"/>
+        </property>
+        <property name="method">
+            <column name="method" sql-type="varchar(255)"/>
+        </property>
+        <property name="messageCode">
+            <column name="message_code" sql-type="integer" not-null="true"/>
+        </property>
+        <property name="messageText">
+            <column name="message_text" sql-type="text" not-null="true"/>
+        </property>
+        <property name="endUserId">
+            <column name="end_user_id" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="clientId">
+            <column name="client_id" sql-type="varchar(255)" not-null="true"/>
+        </property>
+        <property name="timestamp">
+            <column name="timestamp" sql-type="timestamp(0)" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
