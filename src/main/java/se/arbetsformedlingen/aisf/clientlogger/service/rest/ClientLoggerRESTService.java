@@ -4,7 +4,6 @@ import io.swagger.annotations.Api;
 import se.arbetsformedlingen.aisf.clientlogger.business.ClientLoggerHandler;
 import se.arbetsformedlingen.aisf.clientlogger.exception.ClientLoggerException;
 import se.arbetsformedlingen.aisf.clientlogger.vo.ClientLoggerCreateVO;
-import se.arbetsformedlingen.aisf.clientlogger.vo.ClientLoggerVO;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -37,14 +36,14 @@ public class ClientLoggerRESTService {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response createLogRecord(ClientLoggerCreateVO clientLoggerCreateVO) {
-        Response.ResponseBuilder builder = null;
+        Response.ResponseBuilder builder;
 
         try {
             clientLoggerHandler.createLogRecord(clientLoggerCreateVO);
             // Create an "ok" response
             builder = Response.ok();
         } catch (ClientLoggerException e) {
-            Map<String, String> responseObj = new HashMap<String, String>();
+            Map<String, String> responseObj = new HashMap<>();
             responseObj.put("error", e.getMessage());
             builder = Response.status(Response.Status.BAD_REQUEST).entity(responseObj);
         }
